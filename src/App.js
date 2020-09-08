@@ -6,21 +6,36 @@ import { Redirect, Route, Switch } from 'react-router-dom';
 import { ToastContainer } from 'react-toastify';
 import NavBar from './components/navBar';
 import Products from './components/products';
+import auth from './services/authService';
+import RegisterForm from './components/registerForm';
+import LoginForm from './components/loginForm';
+import Logout from './components/logout';
 
 class App extends Component {
+
+  state = {};
+
+  componentDidMount() {
+    const user = auth.getCurrentUser();
+    this.setState({ user });
+  }
+
   render(){
+
+    const { user } = this.state;
+
     return (
       <React.Fragment>
         <ToastContainer />
-        {/* <NavBar user={user} /> */}
-        <NavBar/>
+        <NavBar user={user} />
+        
         <main className="container">
           <Switch>
             <Route path="/products" component={Products}/>
-            {/* <Route path="/register" component={RegisterForm} />
+             <Route path="/register" component={RegisterForm} />
             <Route path="/login" component={LoginForm} />
             <Route path="/logout" component={Logout} />
-            <ProtectedRoute path="/movies/:id" component={MovieForm} />
+            {/*<ProtectedRoute path="/movies/:id" component={MovieForm} />
             <Route
               path="/movies"
               render={(props) => <Movies {...props} user={this.state.user} />}
