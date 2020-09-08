@@ -1,13 +1,12 @@
 import * as React from 'react';
-import { Component, useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Component} from 'react';
+
 
 
  
 class Products extends Component {
 
-   // const [clicks: any, setClicks: any] = useState(initial: any);
-   // const [products: [], setProducts: []] = useState(Link)
+   
     render() { 
         return ( <div className="container">
             <div className="row">

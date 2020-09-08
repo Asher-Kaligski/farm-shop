@@ -11,11 +11,14 @@ import RegisterForm from './components/registerForm';
 import LoginForm from './components/loginForm';
 import Logout from './components/logout';
 
+import axios from 'axios';
+
 class App extends Component {
 
   state = {};
 
-  componentDidMount() {
+  async componentDidMount() {
+    
     const user = auth.getCurrentUser();
     this.setState({ user });
   }
