@@ -5,7 +5,7 @@ const NavBar = ({ user }) => {
   return (
     <nav className="navbar navbar-expand-lg navbar-light bg-light">
       <Link className="navbar-brand ml-2" to="/">
-        <i class="fa fa-pagelines" aria-hidden="true"></i>
+        <i className="fa fa-pagelines" aria-hidden="true"></i>
       </Link>
       <span>Farm Shop</span>
       <button
@@ -53,7 +53,7 @@ const NavBar = ({ user }) => {
             </React.Fragment>
           )}
           <Link className="navbar-brand ml-2" to="/shopping-cart">
-            <i class="fa fa-cart-plus" aria-hidden="true"></i>
+            <i className="fa fa-cart-plus" aria-hidden="true"></i>
           </Link>
         </div>
       </div>

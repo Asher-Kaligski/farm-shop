@@ -1,9 +1,11 @@
 import http from "./httpService";
 
 export function register(user) {
-  return http.post(process.env.REACT_APP_API_URL, {
-    email: user.username,
+  return http.post(process.env.REACT_APP_API_URL + '/users', {
+    email: user.email,
     password: user.password,
-    name: user.name
+    firstName: user.firstName,
+    lastName: user.lastName,
+    phone: user.phone,
   });
 }
