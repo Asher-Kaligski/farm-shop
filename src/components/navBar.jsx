@@ -29,13 +29,13 @@ const NavBar = ({ user }) => {
               <span class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 {user.firstName}
               </span>
-              <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <div class="dropdown-menu user-menu" aria-labelledby="navbarDropdown">
 
-                <NavLink className="nav-item nav-link" to="/profile">
+                <NavLink className="dropdown-item nav-link" to="/user-profile">
                   Profile
               </NavLink>
-
-                <NavLink className="nav-item nav-link" to="/logout">
+              <div class="dropdown-divider"></div>
+                <NavLink className="dropdown-item nav-link" to="/logout">
                   Logout
                   </NavLink>
 
@@ -52,7 +52,7 @@ const NavBar = ({ user }) => {
                   </NavLink>
             </React.Fragment>
           )}
-          <Link className="navbar-brand ml-2" to="/">
+          <Link className="navbar-brand ml-2" to="/shopping-cart">
             <i class="fa fa-cart-plus" aria-hidden="true"></i>
           </Link>
         </div>
