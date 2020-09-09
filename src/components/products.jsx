@@ -25,13 +25,15 @@ class Products extends Component {
 
         return (<div className="container">
             <div className="row">
-                <div className="col-12 mt-4">
-                    <h1>Products iterate over all products</h1>
-                    {products.map(product => (
-                        <ProductCart key={product._id} product={product} />
+                {/* <div className="col-12 mt-4"> */}
+                    {products.map((product, i) => (
+                        <div className="col-4">
+                        <ProductCart key={product._id} product={product} index={i} />
+                        </div>
+                        
                     ))
                     }
-                </div>
+                {/* </div> */}
             </div>
         </div>);
     }
