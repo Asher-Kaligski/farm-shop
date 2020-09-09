@@ -38,16 +38,12 @@ class RegisterForm extends Form {
       .required()
       .min(8)
       .max(15)
-      // .pattern(new RegExp('^[a-zA-Z0-9]{8,15}$'))
       .label("Password")
   };
 
   doSubmit = async () => {
     try {
-      //const response = await userService.register(this.state.data);
-      // auth.loginWithJwt(response.headers["x-auth-token"]);
-      // window.location = "/";
-
+      
       await userService.register(this.state.data);
 
       const { email, password } = this.state.data;

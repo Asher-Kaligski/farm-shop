@@ -25,11 +25,11 @@ const NavBar = ({ user }) => {
         </div>
         <div className="navbar-nav">
           {user && (
-            <div class="nav-item dropdown">
-              <span class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <div className="nav-item dropdown">
+              <span className="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 {user.firstName}
               </span>
-              <div class="dropdown-menu user-menu" aria-labelledby="navbarDropdown">
+              <div className="dropdown-menu user-menu" aria-labelledby="navbarDropdown">
 
                 <NavLink className="dropdown-item nav-link" to="/user-profile">
                   Profile
