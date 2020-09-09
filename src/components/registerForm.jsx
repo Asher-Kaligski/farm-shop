@@ -37,27 +37,30 @@ class RegisterForm extends Form {
     password: Joi.string()
       .required()
       .min(8)
-      .max(1024)
+      .max(15)
       // .pattern(new RegExp('^[a-zA-Z0-9]{8,15}$'))
       .label("Password")
   };
 
   doSubmit = async () => {
     try {
-      const response = await userService.register(this.state.data);
+      //const response = await userService.register(this.state.data);
       // auth.loginWithJwt(response.headers["x-auth-token"]);
+      // window.location = "/";
+
+      await userService.register(this.state.data);
 
       const { email, password } = this.state.data;
 
       await auth.login(email, password);
 
+      if (auth.getCurrentUser()) return window.location = "/";
 
-
-      window.location = "/";
+     
     } catch (ex) {
       if (ex.response && ex.response.status === 400) {
         const errors = { ...this.state.errors };
-        errors.username = ex.response.data;
+        errors.firstName = ex.response.data;
         this.setState({ errors });
       }
     }
