@@ -34,7 +34,7 @@ const NavBar = ({ user }) => {
                 <NavLink className="dropdown-item nav-link" to="/user-profile">
                   Profile
               </NavLink>
-              <div class="dropdown-divider"></div>
+              <div className="dropdown-divider"></div>
                 <NavLink className="dropdown-item nav-link" to="/logout">
                   Logout
                   </NavLink>
