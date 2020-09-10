@@ -51,6 +51,7 @@ async function getOrCreateCartId() {
 
 export async function updateCart(items) {
     const cartId = await getOrCreateCartId();
+
     const shoppingCart = await http.patch(apiEndpoint + '/' + cartId, items);
     return shoppingCart;
   }

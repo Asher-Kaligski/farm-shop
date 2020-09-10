@@ -1,95 +1,86 @@
 import * as React from 'react';
 import { Component } from 'react';
-import ProductCart from './productCart';
-import CategoriesList from './common/categoriesList';
-import productService from './../services/productService';
+
 import categoryService from './../services/categoryService';
+import productService from './../services/productService';
 import shoppingCartService from './../services/shoppingCartService';
-
-
-
+import CategoriesList from './common/categoriesList';
+import ProductCart from './productCart';
 
 class Products extends Component {
+  state = {
+    products: [],
+    categories: [],
+    selectedCategory: null,
+    shoppingCart: null,
+  };
 
-    state = { products: [], categories: [], selectedCategory: null, shoppingCart: null };
-
-    async componentDidMount() {
-        let products = await productService.getAll();
-        for (let product of products) {
-            product.quantity = 0;
-        }
-        
-
-        const categories = await categoryService.getAll();
-
-        const shoppingCart = await shoppingCartService.getCart();
-
-        console.log('shoppingCart', shoppingCart);
-
-        if (shoppingCart.items.length)
-            shoppingCart.items.forEach(item => {
-                const index = products.findIndex(p => p._id === item.product._id);
-                if (index !== -1) products[index].quantity = item.quantity;
-            })
-
-
-            console.log('products', products);
-
-
-        this.setState({ products, categories, shoppingCart })
+  async componentDidMount() {
+    let products = await productService.getAll();
+    for (let product of products) {
+      product.quantity = 0;
     }
 
-    handleCategorySelect = categoryName => {
-        this.setState({ selectedCategory: categoryName });
-    };
+    const categories = await categoryService.getAll();
 
-    render() {
-        const { products, categories, selectedCategory } = this.state;
+    const shoppingCart = await shoppingCartService.getCart();
 
+    if (shoppingCart.items.length)
+      shoppingCart.items.forEach((item) => {
+        const index = products.findIndex((p) => p._id === item.product._id);
+        if (index !== -1) products[index].quantity = item.quantity;
+      });
 
-        let filteredProducts = [];
-        if (selectedCategory)
-            filteredProducts = products.filter(p => p.category === selectedCategory);
-        else filteredProducts = products;
+    this.setState({ products, categories, shoppingCart });
+  }
 
-        if (!filteredProducts.length) return <h1>Products have not been found</h1>;
+  handleCategorySelect = (categoryName) => {
+    this.setState({ selectedCategory: categoryName });
+  };
 
-        return (<div className="container-fluid">
-            <div className="row">
+  render() {
+    const { products, categories, selectedCategory } = this.state;
 
-                <div className="col-3 d-block d-lg-none">
-                    <div className="sticky-top">
-                        <p>Mobile Select Categories</p>
-                    </div>
-                </div>
+    let filteredProducts = [];
+    if (selectedCategory)
+      filteredProducts = products.filter(
+        (p) => p.category === selectedCategory
+      );
+    else filteredProducts = products;
 
-                <div className="col-3 d-none d-lg-block">
-                    <div className="sticky-top">
-                        <CategoriesList
-                            items={categories}
-                            selectedItem={selectedCategory}
-                            onItemSelect={this.handleCategorySelect}
-                        />
+    if (!filteredProducts.length) return <h1>Products have not been found</h1>;
 
-                    </div>
-                </div>
-                <div className="col">
-                    <div className="row">
-                        {/* <div className="col-12 mt-4"> */}
-                        {filteredProducts.map((product, i) => (
-                            <div className="col-md-2 col-lg-3 col-xl-4">
-                                <ProductCart key={product._id} product={product} index={i} />
-                            </div>
-
-                        ))
-                        }
-                        {/* </div> */}
-                    </div>
-                </div>
+    return (
+      <div className="container-fluid">
+        <div className="row">
+          <div className="col-3 d-block d-lg-none">
+            <div className="sticky-top">
+              <p>Mobile Select Categories</p>
             </div>
-        </div>);
-    }
+          </div>
+
+          <div className="col-3 d-none d-lg-block">
+            <div className="sticky-top">
+              <CategoriesList
+                items={categories}
+                selectedItem={selectedCategory}
+                onItemSelect={this.handleCategorySelect}
+              />
+            </div>
+          </div>
+          <div className="col">
+            <div className="row">
+              {filteredProducts.map((product, i) => (
+                <div className="col-md-2 col-lg-3 col-xl-4">
+                  <ProductCart key={product._id} product={product} />
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </div>
+    );
+  }
 }
 
 export default Products;
-
