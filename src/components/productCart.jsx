@@ -9,7 +9,7 @@ class ProductCart extends Component {
         return (
             <React.Fragment>
             <div className="card mb-4" >
-            <img class="card-img-top" src={product.imageUrl} style={{height: '70vh'}} alt=""></img>
+            <img class="card-img-top" src={product.imageUrl} style={{height: '40vh'}} alt=""></img>
             
             <ul className="list-group list-group-flush">
               <li className="list-group-item text-center">{product.farm.name}</li>

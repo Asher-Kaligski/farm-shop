@@ -52,22 +52,7 @@ class Products extends Component {
                             selectedItem={selectedCategory}
                             onItemSelect={this.handleCategorySelect}
                         />
-                        {/* <ul class="list-group my-1">
-                            <li className="list-group-item list-group-item-action active">All categories</li>
-                            {
-                                categories.map(category => (
-                                    <li className="list-group-item list-group-item-action">{category.name}</li>
-                                ))
-                            }
-                        </ul> */}
-                        {/* <ul class="list-group my-1">
-                            <li className="list-group-item list-group-item-action active">All categories</li>
-                            {
-                                categories.map(category => (
-                                    <li className="list-group-item list-group-item-action">{category.name}</li>
-                                ))
-                            }
-                        </ul> */}
+                       
                     </div>
                 </div>
                 <div className="col">
