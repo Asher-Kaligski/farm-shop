@@ -3,6 +3,7 @@ import ShoppingCartTable from './shoppinCartTable';
 import shoppingCartService from './../services/shoppingCartService';
 import Pagination from './common/pagination';
 import { paginate } from '../utils/paginate';
+import { Link, NavLink } from 'react-router-dom';
 import SearchBox from './searchBox';
 import _ from 'lodash';
 
@@ -73,7 +74,11 @@ class ShoppingCart extends Component {
           <div className="col-12 mt-2">
             <h2 className="text-center mb-3">Shopping Cart</h2>
 
-            <SearchBox value={searchQuery} onChange={this.handleSearch} placeholder="Search Product"/>
+            <SearchBox
+              value={searchQuery}
+              onChange={this.handleSearch}
+              placeholder="Search Product"
+            />
             <ShoppingCartTable
               items={items}
               sortColumn={sortColumn}
@@ -85,6 +90,14 @@ class ShoppingCart extends Component {
               currentPage={currentPage}
               onPageChange={this.handlePageChange}
             />
+          </div>
+          <div className="col-12 mt-2 d-flex justify-content-around">
+            <Link to="/check-out">
+              <button type="button" disabled={!items.length} className="btn btn-primary">Check Out</button>
+            </Link>
+            <Link to="/products">
+              <button type="button" className="btn btn-primary">Continue Shopping</button>
+            </Link>
           </div>
         </div>
       </div>
