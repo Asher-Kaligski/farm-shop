@@ -18,7 +18,7 @@ const ProductQuantity = ({ quantity, onIncrement, onDecrement }) => {
             -
           </button>
         </div>
-        <div className="col text-center">{quantity}</div>
+        <div className="col text-center mt-2">{quantity} in cart</div>
         <div className="col-2">
           <button className="btn btn-secondary btn-block" onClick={onIncrement}>
             +

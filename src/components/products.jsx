@@ -48,7 +48,7 @@ class Products extends Component {
       );
     else filteredProducts = products;
 
-    if (!filteredProducts.length) return <h1>Products have not been found</h1>;
+   // if (!filteredProducts.length) return <h1>Products have not been found</h1>;
 
     return (
       <div className="container-fluid">
@@ -71,7 +71,7 @@ class Products extends Component {
           <div className="col">
             <div className="row">
               {filteredProducts.map((product, i) => (
-                <div className="col-md-2 col-lg-3 col-xl-4">
+                <div key={i} className="col-md-2 col-lg-3 col-xl-4">
                   <ProductCart key={product._id} product={product} />
                 </div>
               ))}
