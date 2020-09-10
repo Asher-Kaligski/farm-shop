@@ -37,7 +37,7 @@ class App extends Component {
         <ToastContainer />
         <NavBar user={user} />
         
-        <main className="container">
+        <main className="container-fluid">
           <Switch>
             <Route path="/products" component={Products}/>
              <Route path="/register" component={RegisterForm} />
