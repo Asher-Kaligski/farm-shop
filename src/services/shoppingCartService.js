@@ -20,7 +20,7 @@ export async function getCart() {
 
     return shoppingCart;
 }
-export async function getCartById(cartID) {
+export async function getCartById(cartId) {
 
     const { data: shoppingCart } = await http.get(apiEndpoint + '/' + cartId);
 
@@ -36,7 +36,7 @@ export async function getAll() {
 }
 
 async function getOrCreateCartId() {
-    const cartId = this.localStorage.get(SHOPPING_CART_ID);
+    const cartId = localStorage.getItem(SHOPPING_CART_ID);
     if (cartId) {
         return cartId;
     }
@@ -44,15 +44,22 @@ async function getOrCreateCartId() {
     const shoppingCart = await create();
 
 
-    this.localStorage.set(SHOPPING_CART_ID, shoppingCart._id);
+    localStorage.setItem(SHOPPING_CART_ID, shoppingCart._id);
 
     return shoppingCart._id;
 }
+
+export async function updateCart(items) {
+    const cartId = await getOrCreateCartId();
+    const shoppingCart = await http.patch(apiEndpoint + '/' + cartId, items);
+    return shoppingCart;
+  }
 
 
 
 export default {
     create,
     getCart,
-    getCartById
+    getCartById,
+    updateCart
 };

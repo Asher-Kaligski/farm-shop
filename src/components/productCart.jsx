@@ -1,11 +1,13 @@
 import React, { Component } from 'react';
 
+import ProductQuantity from './productQuantity';
+
 class ProductCart extends Component {
     state = {  };
     render() { 
         const {product, index} = this.props;
         // const isBreakRow = ((index + 1) % 4 === 0) ? true : false;
-        console.log(product);
+       // console.log(product);
         return (
             <React.Fragment>
             <div className="card mb-4" >
@@ -16,7 +18,8 @@ class ProductCart extends Component {
               <li className="list-group-item text-center font-weight-bold">{product.title}</li>
               <li className="list-group-item text-center">{product.price}$</li>
             </ul>
-            <a href="#" className="btn btn-primary">Add To Cart</a>
+            <ProductQuantity product={product}/>
+            {/* <a href="#" className="btn btn-primary">Add To Cart</a> */}
           </div>
           {/* {isBreakRow && <div className="w-100"></div>} */}
           </React.Fragment>

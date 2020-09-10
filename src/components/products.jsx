@@ -4,26 +4,44 @@ import ProductCart from './productCart';
 import CategoriesList from './common/categoriesList';
 import productService from './../services/productService';
 import categoryService from './../services/categoryService';
+import shoppingCartService from './../services/shoppingCartService';
 
 
 
 
 class Products extends Component {
 
-    state = { products: [], categories: [], selectedCategory: null };
+    state = { products: [], categories: [], selectedCategory: null, shoppingCart: null };
 
     async componentDidMount() {
-        const products = await productService.getAll();
-        console.log('products', products);
+        let products = await productService.getAll();
+        for (let product of products) {
+            product.quantity = 0;
+        }
+        
 
         const categories = await categoryService.getAll();
 
-        this.setState({ products, categories })
+        const shoppingCart = await shoppingCartService.getCart();
+
+        console.log('shoppingCart', shoppingCart);
+
+        if (shoppingCart.items.length)
+            shoppingCart.items.forEach(item => {
+                const index = products.findIndex(p => p._id === item.product._id);
+                if (index !== -1) products[index].quantity = item.quantity;
+            })
+
+
+            console.log('products', products);
+
+
+        this.setState({ products, categories, shoppingCart })
     }
 
     handleCategorySelect = categoryName => {
-        this.setState({ selectedCategory: categoryName});
-      };
+        this.setState({ selectedCategory: categoryName });
+    };
 
     render() {
         const { products, categories, selectedCategory } = this.state;
@@ -52,7 +70,7 @@ class Products extends Component {
                             selectedItem={selectedCategory}
                             onItemSelect={this.handleCategorySelect}
                         />
-                       
+
                     </div>
                 </div>
                 <div className="col">
