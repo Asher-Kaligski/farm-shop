@@ -1,16 +1,89 @@
-import React, { Component } from 'react';
+import React from "react";
+import Joi from "joi-browser";
+import Form from "./common/form";
+import * as userService from "../services/userService";
+import auth from "../services/authService";
 
-class UserProfile extends Component {
-    state = {  };
-    render() { 
-        return ( <div className="container">
-            <div className="row">
-                <div className="col-12 mt-4">
-                    <h1>User Profile</h1>
-                </div>
-            </div>
-        </div> );
+
+class UserProfile extends Form {
+  state = {
+    data: { firstName: "", lastName: "", email: "", phone: "", password: "" },
+    errors: {}
+  };
+
+  async componentDidMount() {
+      const user = await userService.getById();
+      console.log('user', user)
+      this.setState({firstName: user.firstName, lastName: user.label, email: user.email, phone: user.phone});
+  }
+
+  schema = {
+    firstName: Joi.string()
+      .alphanum()
+      .min(2)
+      .max(30)
+      .required()
+      .label("FirstName"),
+    lastName: Joi.string()
+      .alphanum()
+      .min(2)
+      .max(30)
+      .required()
+      .label("LastName"),
+    phone: Joi.string()
+      .min(5)
+      .max(30)
+      .required()
+      .label("PhoneNumber"),
+    email: Joi.string()
+      .min(5)
+      .max(233)
+      .email()
+      .required()
+      .label("Email"),
+    password: Joi.string()
+      .required()
+      .min(8)
+      .max(15)
+      .label("Password")
+  };
+
+  doSubmit = async () => {
+    try {
+      
+      await userService.update(this.state.data);
+
+      const { email, password } = this.state.data;
+
+      await auth.login(email, password);
+
+      if (auth.getCurrentUser()) return window.location = "/";
+
+     
+    } catch (ex) {
+      if (ex.response && ex.response.status === 400) {
+        const errors = { ...this.state.errors };
+        errors.firstName = ex.response.data;
+        this.setState({ errors });
+      }
     }
+  };
+
+  render() {
+    return (
+      <div>
+        <h1>Profile</h1>
+        <form onSubmit={this.handleSubmit}>
+          {this.renderInput("firstName", "FirstName")}
+          {this.renderInput("lastName", "LastName")}
+          {this.renderInput("email", "Email")}
+          {this.renderInput("password", "Password", "password")}
+          {this.renderInput("phone", "Phone Number")}
+          {this.renderButton("Update")}
+        </form>
+      </div>
+    );
+  }
 }
- 
+
 export default UserProfile;
