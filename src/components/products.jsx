@@ -53,13 +53,19 @@ class Products extends Component {
     return (
       <div className="container-fluid">
         <div className="row">
-          <div className="col-3 d-block d-lg-none">
-            <div className="sticky-top">
-              <p>Mobile Select Categories</p>
+          <div className="col-12 d-block d-lg-none">
+            <div className="sticky-top my-2">
+          
+              <CategoriesList
+                items={categories}
+                selectedItem={selectedCategory}
+                onItemSelect={this.handleCategorySelect}
+              />
+            
             </div>
           </div>
 
-          <div className="col-3 d-none d-lg-block">
+          <div className="col-lg-3 d-none d-lg-block">
             <div className="sticky-top">
               <CategoriesList
                 items={categories}
