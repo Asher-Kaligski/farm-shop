@@ -2,7 +2,7 @@ import React from "react";
 import Joi from "joi-browser";
 import Form from "./common/form";
 import orderService from '../services/orderService';
-import { Link, NavLink } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { toast } from 'react-toastify';
 
 class ShippingForm extends Form {
@@ -35,6 +35,7 @@ class ShippingForm extends Form {
         notes: Joi.string()
             .min(5)
             .max(255)
+            .allow('')
             .label("Notes")
     };
 

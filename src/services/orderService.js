@@ -10,7 +10,17 @@ export async function getAll() {
 
     const { data: orders } = await http.get(apiEndpoint);
 
+
     return orders;
+}
+
+export async function getById(orderId) {
+
+    const { data: order } = await http.get(apiEndpoint + '/' + orderId);
+
+
+
+    return order;
 }
 
 export async function placeOrder(shipping) {
@@ -32,5 +42,6 @@ export async function placeOrder(shipping) {
 
 export default {
     getAll,
+    getById,
     placeOrder
 };
