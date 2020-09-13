@@ -3,6 +3,7 @@ import Joi from "joi-browser";
 import Form from "./common/form";
 import * as userService from "../services/userService";
 import auth from "../services/authService";
+import { toast } from 'react-toastify';
 
 class RegisterForm extends Form {
   state = {
@@ -45,6 +46,8 @@ class RegisterForm extends Form {
     try {
       
       await userService.register(this.state.data);
+
+      toast.success('The account has been created successfully');
 
       const { email, password } = this.state.data;
 

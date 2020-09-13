@@ -2,6 +2,7 @@ import React from "react";
 import Joi from "joi-browser";
 import Form from "./common/form";
 import * as userService from "../services/userService";
+import { toast } from 'react-toastify';
 import auth from "../services/authService";
 
 
@@ -57,6 +58,8 @@ class UserProfile extends Form {
       await userService.update(this.state.data);
 
       const { email, password } = this.state.data;
+
+      toast.success('Your profile has been updated successfully');
 
       await auth.login(email, password);
 
