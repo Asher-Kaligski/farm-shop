@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 class OrdersTable extends Component {
   columns = [
     
-    { path: 'createAt', label: 'Date Placed' },
+    { path: 'datePlaced', label: 'Date Placed' },
     { path: 'shoppingCart.totalPrice', label: 'Total Price' },
     {
         path: "view",
