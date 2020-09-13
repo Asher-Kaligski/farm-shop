@@ -30,11 +30,14 @@ const NavBar = ({ user }) => {
                 {user.firstName}
               </span>
               <div className="dropdown-menu user-menu" aria-labelledby="navbarDropdown">
-
+                <NavLink className="dropdown-item nav-link" to="/my-orders">
+                  My Orders
+              </NavLink>
+                <div className="dropdown-divider"></div>
                 <NavLink className="dropdown-item nav-link" to="/user-profile">
                   Profile
               </NavLink>
-              <div className="dropdown-divider"></div>
+                <div className="dropdown-divider"></div>
                 <NavLink className="dropdown-item nav-link" to="/logout">
                   Logout
                   </NavLink>

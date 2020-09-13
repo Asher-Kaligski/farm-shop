@@ -4,21 +4,26 @@ import ShoppingCartSummary from './shoppingCartSummary';
 import shoppingCartService from './../services/shoppingCartService';
 
 class CheckOut extends Component {
-    state = { shoppingCart: '' };
+  state = {
+    items: [],
+    totalPrice: 0,
+  };
 
-    async componentDidMount() {
-      const shoppingCart = await shoppingCartService.getCart();
-      this.setState({ shoppingCart });
-    }
+  async componentDidMount() {
+    const { items, totalPrice } = await shoppingCartService.getCart();
+
+    this.setState({ items, totalPrice });
+  }
   render() {
+    const { items, totalPrice } = this.state;
     return (
-      <div class="container mt-3">
-        <div class="row">
-          <div class="col-md-6">
+      <div className="container mt-3">
+        <div className="row">
+          <div className="col-md-6">
             <ShippingForm />
           </div>
-          <div class="col-md-6">
-            <ShoppingCartSummary shoppingCart={this.state.shoppingCart}/>
+          <div className="col-md-6">
+            <ShoppingCartSummary items={items} totalPrice={totalPrice} />
           </div>
         </div>
       </div>

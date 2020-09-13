@@ -21,7 +21,6 @@ class ShoppingCart extends Component {
     const { items, totalPrice } = await shoppingCartService.getCart();
 
     this.setState({ items, totalPrice });
-    console.log('state', this.state);
   }
 
   handlePageChange = (page) => {
@@ -45,6 +44,7 @@ class ShoppingCart extends Component {
       items: allItems,
     } = this.state;
 
+    
     let filtered = allItems;
     if (searchQuery)
       filtered = allItems.filter((i) =>
