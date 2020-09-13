@@ -5,7 +5,7 @@ const NavBar = ({ user }) => {
   return (
     <nav className="navbar navbar-expand-lg navbar-light bg-light">
       <Link className="navbar-brand ml-2" to="/">
-        <i className="fa fa-pagelines" aria-hidden="true"></i>
+        <i className="fa fa-pagelines ml-4" aria-hidden="true"></i>
       </Link>
       <span>Farm Shop</span>
       <button
@@ -25,20 +25,24 @@ const NavBar = ({ user }) => {
         </div>
         <div className="navbar-nav">
           {user && (
-            <div className="nav-item dropdown">
+            <div className="nav-item dropdown mr-3">
               <span className="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 {user.firstName}
               </span>
               <div className="dropdown-menu user-menu" aria-labelledby="navbarDropdown">
-                <NavLink className="dropdown-item nav-link" to="/my-orders">
+                <NavLink className="dropdown-item" to="/my-orders">
                   My Orders
               </NavLink>
                 <div className="dropdown-divider"></div>
-                <NavLink className="dropdown-item nav-link" to="/user-profile">
+                <NavLink className="dropdown-item" to="/shopping-cart">
+                  ShoppingCart
+              </NavLink>
+                <div className="dropdown-divider"></div>
+                <NavLink className="dropdown-item" to="/user-profile">
                   Profile
               </NavLink>
                 <div className="dropdown-divider"></div>
-                <NavLink className="dropdown-item nav-link" to="/logout">
+                <NavLink className="dropdown-item" to="/logout">
                   Logout
                   </NavLink>
 
@@ -56,7 +60,7 @@ const NavBar = ({ user }) => {
             </React.Fragment>
           )}
           <Link className="navbar-brand ml-2" to="/shopping-cart">
-            <i className="fa fa-cart-plus" aria-hidden="true"></i>
+            <i className="fa fa-cart-plus mr-4" aria-hidden="true"></i>
           </Link>
         </div>
       </div>
