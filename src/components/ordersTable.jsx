@@ -9,7 +9,7 @@ class OrdersTable extends Component {
     { path: 'shoppingCart.totalPrice', label: 'Total Price' },
     {
         path: "view",
-        label: "View Order",
+        label: "Action",
         content: order => <Link to={`/view-order/${order._id}`}><button className="btn btn-primary">View</button></Link>
       }
   ];
