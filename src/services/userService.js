@@ -24,7 +24,7 @@ export function register(user) {
 }
 export function update(user) {
   const customerId = authService.getCurrentUser()._id;
-  return http.post(apiEndpoint + '/' + customerId, {
+  return http.put(apiEndpoint + '/' + customerId, {
     email: user.email,
     password: user.password,
     firstName: user.firstName,

@@ -12,9 +12,12 @@ class UserProfile extends Form {
   };
 
   async componentDidMount() {
-      const user = await userService.getById();
-      console.log('user', user)
-      this.setState({firstName: user.firstName, lastName: user.label, email: user.email, phone: user.phone});
+      const {firstName, lastName, email, phone} = await userService.getById();
+      console.log('firstName', firstName)
+      const data = {firstName, lastName, email, phone, password: ''};
+      
+      this.setState({data});
+      console.log('this.state', this.state)
   }
 
   schema = {
