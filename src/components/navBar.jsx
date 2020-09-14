@@ -3,7 +3,7 @@ import { Link, NavLink } from 'react-router-dom';
 
 const NavBar = ({ user }) => {
   return (
-    <nav className="navbar navbar-expand-lg navbar-light bg-light">
+    <nav className="navbar navbar-expand-lg navbar-light bg-light mb-2">
       <Link className="navbar-brand ml-2" to="/">
         <i className="fa fa-pagelines" aria-hidden="true"></i>
       </Link>

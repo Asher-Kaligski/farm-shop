@@ -5,12 +5,12 @@ const apiEndpoint = "/users";
 
 
 export async function getById() {
-  
+
   const customerId = authService.getCurrentUser()._id;
 
   const { data: user } = await http.get(apiEndpoint + '/' + customerId);
-  
-   return user;
+
+  return user;
 }
 
 export function register(user) {
@@ -41,12 +41,3 @@ export default {
   update
 };
 
-// export function register(user) {
-//   return http.post(process.env.REACT_APP_API_URL + '/users', {
-//     email: user.email,
-//     password: user.password,
-//     firstName: user.firstName,
-//     lastName: user.lastName,
-//     phone: user.phone,
-//   });
-// }

@@ -3,7 +3,7 @@ import ShoppingCartTable from './shoppinCartTable';
 import shoppingCartService from './../services/shoppingCartService';
 import Pagination from './common/pagination';
 import { paginate } from '../utils/paginate';
-import { Link, NavLink } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import SearchBox from './searchBox';
 import _ from 'lodash';
 
@@ -44,14 +44,13 @@ class ShoppingCart extends Component {
       items: allItems,
     } = this.state;
 
-    
+
     let filtered = allItems;
     if (searchQuery)
       filtered = allItems.filter((i) =>
         i.product.title.toLowerCase().startsWith(searchQuery.toLowerCase())
       );
-    // else if (selectedGenre && selectedGenre._id)
-    //   filtered = allItems.filter(m => m.genre._id === selectedGenre._id);
+
 
     const sorted = _.orderBy(filtered, [sortColumn.path], [sortColumn.order]);
 
@@ -61,12 +60,10 @@ class ShoppingCart extends Component {
   };
 
   render() {
-    //const { items } = this.state;
     const { pageSize, currentPage, sortColumn, searchQuery } = this.state;
 
     const { totalCount, data: items } = this.getPagedData();
 
-    // if (!items.length) return <h4>You have 0 items in our shopping cart</h4>;
 
     return (
       <div className="container">

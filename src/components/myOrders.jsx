@@ -54,24 +54,20 @@ class MyOrders extends Component {
             filtered = allItems.filter((o) =>
                 o.shoppingCart.totalPrice.toString().toLowerCase().startsWith(searchQuery.toLowerCase())
             );
-        // else if (selectedGenre && selectedGenre._id)
-        //   filtered = allItems.filter(m => m.genre._id === selectedGenre._id);
+        
 
         const sorted = _.orderBy(filtered, [sortColumn.path], [sortColumn.order]);
 
         const items = paginate(sorted, currentPage, pageSize);
 
         return { totalCount: filtered.length, data: items };
-        // return { totalCount: 1, data: items };
     };
 
     render() {
-        //const { items } = this.state;
         const { pageSize, currentPage, sortColumn, searchQuery } = this.state;
 
         const { totalCount, data: orders } = this.getPagedData();
 
-        // if (!items.length) return <h4>You have 0 orders</h4>;
 
         return (
             <div className="container">

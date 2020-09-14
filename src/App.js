@@ -23,12 +23,12 @@ class App extends Component {
   state = {};
 
   componentDidMount() {
-    
+
     const user = auth.getCurrentUser();
     this.setState({ user });
   }
 
-  render(){
+  render() {
 
     const { user } = this.state;
 
@@ -36,31 +36,20 @@ class App extends Component {
       <React.Fragment>
         <ToastContainer />
         <NavBar user={user} />
-        
+
         <main className="container-fluid">
           <Switch>
-            <Route path="/products" component={Products}/>
-             <Route path="/register" component={RegisterForm} />
+            <Route path="/products" component={Products} />
+            <Route path="/register" component={RegisterForm} />
             <Route path="/login" component={LoginForm} />
             <Route path="/logout" component={Logout} />
             <Route path="/shopping-cart" component={ShoppingCart} />
-            
-
 
             <ProtectedRoute path="/my-orders" component={MyOrders} />
             <ProtectedRoute path="/user-profile" component={UserProfile} />
             <ProtectedRoute path="/view-order/:id" component={ViewOrder} />
             <ProtectedRoute path="/check-out" component={CheckOut} />
 
-            {/* <ProtectedRoute path="/movies/:id" component={MovieForm} /> */}
-            {/* <Route
-              path="/movies"
-              render={(props) => <Movies {...props} user={this.state.user} />}
-            />
-            <Route path="/customers" component={Customers} />
-            <Route path="/rentals" component={Rentals} />
-            <Route path="/not-found" component={NotFound} /> */}
-            {/* <Redirect from="/" exact to="/movies" /> */}
             <Redirect from="/" exact to="/products" />
             <Redirect to="/not-found" />
           </Switch>

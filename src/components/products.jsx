@@ -48,7 +48,6 @@ class Products extends Component {
       );
     else filteredProducts = products;
 
-   // if (!filteredProducts.length) return <h1>Products have not been found</h1>;
 
     return (
       <div className="container-fluid">
