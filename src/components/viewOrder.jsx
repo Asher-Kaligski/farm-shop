@@ -24,9 +24,10 @@ class ViewOrder extends Component {
 {order && <div className="container">
       <div className="row">
         <div className="col-12">
-          <h3 className="text-center mb-4">Order Summary</h3>
-          <h4 className="text-center">
+          <h1 className="text-center mb-2">Order Summary</h1>
+          <h5 className="text-center mb-3">
             The order was placed at {(new Date(order.datePlaced)).toLocaleString()}.
+              </h5>
               <ul className="list-group list-group-flush mt-3">
               {order.shoppingCart.items.map((item) => (
                 <li key={item._id} className="list-group-item">
@@ -39,7 +40,7 @@ class ViewOrder extends Component {
                   <div className="float-right">{order.shoppingCart.totalPrice}$</div>
               </li>
             </ul>
-          </h4>
+         
         </div>
       </div>
     </div>}

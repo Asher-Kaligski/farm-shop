@@ -7,14 +7,14 @@ const CategoriesList = ({
     selectedItem,
     onItemSelect
 }) => {
-
+    const classList = "select-category list-group-item";
     return (
         <ul className="list-group my-1">
             <li
                 onClick={() => onItemSelect(null)}
                 key="all"
                 className={
-                    selectedItem ? "list-group-item" : "list-group-item active"
+                    selectedItem ? classList : classList + " active"
                 }
             >
                 All Categories
@@ -24,7 +24,7 @@ const CategoriesList = ({
                     onClick={() => onItemSelect(item.name)}
                     key={item[valueProperty]}
                     className={
-                        item.name === selectedItem ? "list-group-item active" : "list-group-item"
+                        item.name === selectedItem ? classList + " active" : classList
                     }
                 >
                     {item[textProperty]}

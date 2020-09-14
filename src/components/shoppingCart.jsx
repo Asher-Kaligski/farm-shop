@@ -71,8 +71,8 @@ class ShoppingCart extends Component {
     return (
       <div className="container">
         <div className="row">
-          <div className="col-12 mt-2">
-            <h2 className="text-center mb-3">Shopping Cart</h2>
+          <div className="col-12">
+            <h1 className="text-center my-3">Shopping Cart</h1>
 
             <SearchBox
               value={searchQuery}

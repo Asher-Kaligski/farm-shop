@@ -13,12 +13,12 @@ class UserProfile extends Form {
   };
 
   async componentDidMount() {
-      const {firstName, lastName, email, phone} = await userService.getById();
-      console.log('firstName', firstName)
-      const data = {firstName, lastName, email, phone, password: ''};
-      
-      this.setState({data});
-      console.log('this.state', this.state)
+    const { firstName, lastName, email, phone } = await userService.getById();
+    console.log('firstName', firstName)
+    const data = { firstName, lastName, email, phone, password: '' };
+
+    this.setState({ data });
+    console.log('this.state', this.state)
   }
 
   schema = {
@@ -54,7 +54,7 @@ class UserProfile extends Form {
 
   doSubmit = async () => {
     try {
-      
+
       await userService.update(this.state.data);
 
       const { email, password } = this.state.data;
@@ -65,7 +65,7 @@ class UserProfile extends Form {
 
       if (auth.getCurrentUser()) return window.location = "/";
 
-     
+
     } catch (ex) {
       if (ex.response && ex.response.status === 400) {
         const errors = { ...this.state.errors };
@@ -77,16 +77,24 @@ class UserProfile extends Form {
 
   render() {
     return (
-      <div>
-        <h1>Profile</h1>
-        <form onSubmit={this.handleSubmit}>
-          {this.renderInput("firstName", "FirstName")}
-          {this.renderInput("lastName", "LastName")}
-          {this.renderInput("email", "Email")}
-          {this.renderInput("password", "Password", "password")}
-          {this.renderInput("phone", "Phone Number")}
-          {this.renderButton("Update")}
-        </form>
+      <div className="container">
+        <div className="row">
+          <div className="col-lg-2 d-lg-block d-none"></div>
+          <div className="col-lg-8">
+            <h1 className="text-center my-3">Profile</h1>
+            <form onSubmit={this.handleSubmit}>
+              {this.renderInput("firstName", "FirstName")}
+              {this.renderInput("lastName", "LastName")}
+              {this.renderInput("email", "Email")}
+              {this.renderInput("password", "Password", "password")}
+              {this.renderInput("phone", "Phone Number")}
+              <div class="d-flex justify-content-center">
+                {this.renderButton("Update Profile")}
+              </div>
+            </form>
+          </div>
+          <div className="col-lg-2 d-lg-block d-none"></div>
+        </div>
       </div>
     );
   }

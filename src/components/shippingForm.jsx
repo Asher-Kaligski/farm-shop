@@ -62,8 +62,8 @@ class ShippingForm extends Form {
 
     render() {
         return (
-            <div>
-                <h3>Shipping</h3>
+            <div className="container">
+                <h1 className="text-center mb-2">Shipping</h1>
                 <form onSubmit={this.handleSubmit}>
                     {this.renderInput("country", "Country")}
                     {this.renderInput("city", "City")}

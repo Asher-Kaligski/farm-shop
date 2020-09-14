@@ -17,7 +17,7 @@ class CheckOut extends Component {
   render() {
     const { items, totalPrice } = this.state;
     return (
-      <div className="container mt-3">
+      <div className="container my-3">
         <div className="row">
           <div className="col-md-6 mb-4">
             <ShippingForm />

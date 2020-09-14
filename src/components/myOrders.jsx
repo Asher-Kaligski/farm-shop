@@ -76,8 +76,8 @@ class MyOrders extends Component {
         return (
             <div className="container">
                 <div className="row">
-                    <div className="col-12 mt-2">
-                        <h2 className="text-center mb-3">My orders</h2>
+                    <div className="col-12">
+                        <h1 className="text-center my-3">My Orders</h1>
 
                         <SearchBox
                             value={searchQuery}

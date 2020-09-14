@@ -39,13 +39,21 @@ class LoginForm extends Form {
     if (auth.getCurrentUser()) return <Redirect to="/" />;
 
     return (
-      <div>
-        <h1>Login</h1>
-        <form onSubmit={this.handleSubmit}>
-          {this.renderInput("username", "Username")}
-          {this.renderInput("password", "Password", "password")}
-          {this.renderButton("Login")}
-        </form>
+      <div className="container">
+        <div className="row">
+        <div className="col-lg-3 d-lg-block d-none"></div>
+          <div className="col-lg-6">
+            <h1 className="text-center my-3">Login</h1>
+            <form onSubmit={this.handleSubmit}>
+              {this.renderInput("username", "Username")}
+              {this.renderInput("password", "Password", "password")}
+              <div class="d-flex justify-content-center">
+                {this.renderButton("Login")}
+              </div>
+            </form>
+          </div>
+          <div className="col-lg-3 d-lg-block d-none"></div>
+        </div>
       </div>
     );
   }

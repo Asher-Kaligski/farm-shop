@@ -44,7 +44,7 @@ class RegisterForm extends Form {
 
   doSubmit = async () => {
     try {
-      
+
       await userService.register(this.state.data);
 
       toast.success('The account has been created successfully');
@@ -55,7 +55,7 @@ class RegisterForm extends Form {
 
       if (auth.getCurrentUser()) return window.location = "/";
 
-     
+
     } catch (ex) {
       if (ex.response && ex.response.status === 400) {
         const errors = { ...this.state.errors };
@@ -67,16 +67,24 @@ class RegisterForm extends Form {
 
   render() {
     return (
-      <div>
-        <h1>Register</h1>
-        <form onSubmit={this.handleSubmit}>
-          {this.renderInput("firstName", "FirstName")}
-          {this.renderInput("lastName", "LastName")}
-          {this.renderInput("email", "Email")}
-          {this.renderInput("password", "Password", "password")}
-          {this.renderInput("phone", "Phone Number")}
-          {this.renderButton("Register")}
-        </form>
+      <div className="container">
+        <div className="row">
+          <div className="col-lg-2 d-lg-block d-none"></div>
+          <div className="col-lg-8">
+            <h1 className="text-center my-3">Register</h1>
+            <form onSubmit={this.handleSubmit}>
+              {this.renderInput("firstName", "FirstName")}
+              {this.renderInput("lastName", "LastName")}
+              {this.renderInput("email", "Email")}
+              {this.renderInput("password", "Password", "password")}
+              {this.renderInput("phone", "Phone Number")}
+              <div class="d-flex justify-content-center">
+                {this.renderButton("Register")}
+              </div>
+            </form>
+          </div>
+          <div className="col-lg-2 d-lg-block d-none"></div>
+        </div>
       </div>
     );
   }

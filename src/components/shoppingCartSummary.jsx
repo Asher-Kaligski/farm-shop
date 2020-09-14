@@ -8,9 +8,10 @@ const ShoppingCartSummary = ({ items, totalPrice }) => {
     <div className="container">
       <div className="row">
         <div className="col-12">
-          <h3 className="text-center">Order Summary</h3>
-          <h4 className="text-center">
+          <h1 className="text-center mb-1">Order Summary</h1>
+          <h5 className="text-center mb-2">
             You have {items.length} items in your shopping cart.
+            </h5>
               <ul className="list-group list-group-flush">
               {items.map((item) => (
                 <li key={item._id} className="list-group-item">
@@ -23,7 +24,7 @@ const ShoppingCartSummary = ({ items, totalPrice }) => {
                   <div className="float-right">{totalPrice}$</div>
               </li>
             </ul>
-          </h4>
+          
         </div>
       </div>
     </div>
