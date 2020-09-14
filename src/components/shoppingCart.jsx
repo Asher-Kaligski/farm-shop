@@ -1,11 +1,12 @@
+import _ from 'lodash';
 import React, { Component } from 'react';
-import ShoppingCartTable from './shoppinCartTable';
+import { Link } from 'react-router-dom';
+
+import { paginate } from '../utils/paginate';
 import shoppingCartService from './../services/shoppingCartService';
 import Pagination from './common/pagination';
-import { paginate } from '../utils/paginate';
-import { Link } from 'react-router-dom';
 import SearchBox from './searchBox';
-import _ from 'lodash';
+import ShoppingCartTable from './shoppinCartTable';
 
 class ShoppingCart extends Component {
   state = {
@@ -44,13 +45,11 @@ class ShoppingCart extends Component {
       items: allItems,
     } = this.state;
 
-
     let filtered = allItems;
     if (searchQuery)
       filtered = allItems.filter((i) =>
         i.product.title.toLowerCase().startsWith(searchQuery.toLowerCase())
       );
-
 
     const sorted = _.orderBy(filtered, [sortColumn.path], [sortColumn.order]);
 
@@ -63,7 +62,6 @@ class ShoppingCart extends Component {
     const { pageSize, currentPage, sortColumn, searchQuery } = this.state;
 
     const { totalCount, data: items } = this.getPagedData();
-
 
     return (
       <div className="container">
@@ -90,10 +88,18 @@ class ShoppingCart extends Component {
           </div>
           <div className="col-12 mt-2 d-flex justify-content-around">
             <Link to="/check-out">
-              <button type="button" disabled={!items.length} className="btn btn-primary">Check Out</button>
+              <button
+                type="button"
+                disabled={!items.length}
+                className="btn btn-primary"
+              >
+                Check Out
+              </button>
             </Link>
             <Link to="/products">
-              <button type="button" className="btn btn-primary">Continue Shopping</button>
+              <button type="button" className="btn btn-primary">
+                Continue Shopping
+              </button>
             </Link>
           </div>
         </div>

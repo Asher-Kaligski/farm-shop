@@ -1,9 +1,9 @@
 import './index.css';
 import 'bootstrap/dist/css/bootstrap.css';
+import 'bootstrap/dist/js/bootstrap';
 import 'font-awesome/css/font-awesome.css';
 import 'jquery/dist/jquery';
 import 'popper.js/dist/popper';
-import 'bootstrap/dist/js/bootstrap';
 
 import React from 'react';
 import ReactDOM from 'react-dom';

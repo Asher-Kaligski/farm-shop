@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
+
+import shoppingCartService from './../services/shoppingCartService';
 import ShippingForm from './shippingForm';
 import ShoppingCartSummary from './shoppingCartSummary';
-import shoppingCartService from './../services/shoppingCartService';
 
 class CheckOut extends Component {
   state = {

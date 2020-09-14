@@ -20,32 +20,40 @@ const NavBar = ({ user }) => {
         <span className="navbar-toggler-icon" />
       </button>
       <div className="collapse navbar-collapse" id="navbarNavAltMarkup">
-        <div className="navbar-nav  mr-auto">
-
-        </div>
+        <div className="navbar-nav  mr-auto"></div>
         <div className="navbar-nav">
           {user && (
             <div className="nav-item dropdown">
-              <span className="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              <span
+                className="nav-link dropdown-toggle"
+                href="#"
+                id="navbarDropdown"
+                role="button"
+                data-toggle="dropdown"
+                aria-haspopup="true"
+                aria-expanded="false"
+              >
                 {user.firstName}
               </span>
-              <div className="dropdown-menu user-menu dropdown-menu-center" aria-labelledby="navbarDropdown">
+              <div
+                className="dropdown-menu user-menu dropdown-menu-center"
+                aria-labelledby="navbarDropdown"
+              >
                 <NavLink className="dropdown-item" to="/my-orders">
                   My Orders
-              </NavLink>
+                </NavLink>
                 <div className="dropdown-divider"></div>
                 <NavLink className="dropdown-item" to="/shopping-cart">
                   ShoppingCart
-              </NavLink>
+                </NavLink>
                 <div className="dropdown-divider"></div>
                 <NavLink className="dropdown-item" to="/user-profile">
                   Profile
-              </NavLink>
+                </NavLink>
                 <div className="dropdown-divider"></div>
                 <NavLink className="dropdown-item" to="/logout">
                   Logout
-                  </NavLink>
-
+                </NavLink>
               </div>
             </div>
           )}
@@ -53,10 +61,10 @@ const NavBar = ({ user }) => {
             <React.Fragment>
               <NavLink className="nav-item nav-link" to="/login">
                 Login
-                  </NavLink>
+              </NavLink>
               <NavLink className="nav-item nav-link" to="/register">
                 Register
-                  </NavLink>
+              </NavLink>
             </React.Fragment>
           )}
           <Link className="navbar-brand ml-2" to="/shopping-cart">

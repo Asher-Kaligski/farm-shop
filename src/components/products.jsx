@@ -48,19 +48,16 @@ class Products extends Component {
       );
     else filteredProducts = products;
 
-
     return (
       <div className="container-fluid">
         <div className="row">
           <div className="col-12 d-block d-lg-none">
             <div className="sticky-top my-2">
-          
               <CategoriesList
                 items={categories}
                 selectedItem={selectedCategory}
                 onItemSelect={this.handleCategorySelect}
               />
-            
             </div>
           </div>
 
@@ -76,7 +73,7 @@ class Products extends Component {
           <div className="col">
             <div className="row">
               {filteredProducts.map((product, i) => (
-                <div key={i} className="col-md-2 col-lg-3 col-xl-4">
+                <div key={i} className="col-md-6 col-lg-4 col-xl-3">
                   <ProductCart key={product._id} product={product} />
                 </div>
               ))}

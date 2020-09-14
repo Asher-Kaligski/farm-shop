@@ -1,11 +1,9 @@
-import http from "./httpService";
-import authService from "./authService";
+import authService from './authService';
+import http from './httpService';
 
-const apiEndpoint = "/users";
-
+const apiEndpoint = '/users';
 
 export async function getById() {
-
   const customerId = authService.getCurrentUser()._id;
 
   const { data: user } = await http.get(apiEndpoint + '/' + customerId);
@@ -33,11 +31,8 @@ export function update(user) {
   });
 }
 
-
-
 export default {
   getById,
   register,
-  update
+  update,
 };
-

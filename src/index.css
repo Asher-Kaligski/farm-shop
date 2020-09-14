@@ -17,17 +17,17 @@ code {
   min-width: 5rem !important;
 }
 
-
-.select-category:hover{
+.page-link:hover,
+.select-category:hover {
   cursor: pointer;
 }
 
 @media (min-width: 992px) {
-.dropdown-menu-center {
-  right: auto;
-  left: 50%;
-  -webkit-transform: translate(-50%, 0);
-  -o-transform: translate(-50%, 0);
-  transform: translate(-50%, 0);
-}
+  .dropdown-menu-center {
+    right: auto;
+    left: 50%;
+    -webkit-transform: translate(-50%, 0);
+    -o-transform: translate(-50%, 0);
+    transform: translate(-50%, 0);
+  }
 }

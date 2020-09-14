@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+
 import Table from './common/table';
 
 class ShoppingCartTable extends Component {
